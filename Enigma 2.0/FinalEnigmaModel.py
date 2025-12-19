@@ -141,29 +141,29 @@ class EnigmaModel:
             slow_offset = ord(self._rotors[0]) - ord('A') # Slow rotor offset
 
             pos=(ord(letter)-ord('A')+fast_offset)%26 
-            c_fast=FAST_ROTOR[pos] # Letter after fast rotor
+            c_fast=ROTOR_PERMUTATION_FAST[pos] # Letter after fast rotor
 
             pos=(ord(c_fast)-ord('A')+med_offset)%26
-            c_med=MEDIUM_ROTOR[pos] # Letter after medium rotor
+            c_med=ROTOR_PERMUTATION_MEDIUM[pos] # Letter after medium rotor
 
             pos=(ord(c_med)-ord('A')+slow_offset)%26
-            c_slow=SLOW_ROTOR[pos] # Letter after slow rotor
+            c_slow=ROTOR_PERMUTATION_SLOW[pos] # Letter after slow rotor
 
             pos = (ord(c_slow) - ord('A') - slow_offset) % 26 #forward through slow rotor
-            c_slow_forward = SLOW_ROTOR[pos]
+            c_slow_forward = ROTOR_PERMUTATION_SLOW[pos]
 
             pos = ord(c_slow_forward) - ord('A') 
-            c_reflected = REFLECTOR [pos] # Reflector step
+            c_reflected = REFLECTOR_PERMUTATION [pos] # Reflector step
 
-            pos = SLOW_ROTOR.index(c_reflected) # Backward through slow rotor
+            pos = ROTOR_PERMUTATION_SLOW.index(c_reflected) # Backward through slow rotor
             pos = (pos - slow_offset) % 26
             c_slow_back = chr(pos + ord('A')) # Letter after slow rotor backward
 
-            pos = MEDIUM_ROTOR.index(c_slow_back) # Backward through medium rotor
+            pos = ROTOR_PERMUTATION_MEDIUM.index(c_slow_back) # Backward through medium rotor
             pos = (pos - med_offset) % 26
             c_med_back = chr(pos + ord('A'))
 
-            pos = FAST_ROTOR.index(c_med_back)
+            pos = ROTOR_PERMUTATION_FAST.index(c_med_back)
             pos = (pos - fast_offset) % 26
             encoded = chr(pos + ord('A')) # Final encoded letter
 
