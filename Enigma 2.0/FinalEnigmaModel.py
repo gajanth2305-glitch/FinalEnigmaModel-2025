@@ -115,9 +115,16 @@ class EnigmaModel:
         result=[] # List to store the encrypted letters
 
         for letter in message: 
-            if letter not in "ALPHABET":
-                result.append(letter)
-                continue 
+            if letter not in "ALPHABET": # Non-alphabet characters are not encrypted
+                result.append(letter) 
+                continue # Skip to next letter
+        
+            current=self._rotors[2] # Advances the rotors as in key_pressed method
+            pos=ord(current)-ord('A')%26 # Gets position of fast rotor 
+            self._rotors[2]= chr(pos+1+ord('A')) # Advances fast rotor by 1
+
+            
+            
 
 
 def enigma():
