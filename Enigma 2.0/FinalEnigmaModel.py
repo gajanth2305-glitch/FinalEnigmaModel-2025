@@ -107,18 +107,7 @@ class EnigmaModel:
         pos = (pos + 1) % 26 # Advance position by 1, modulo prevents position going above the 26 letters in the alphabet
         self._rotors[index] = chr(pos+ord('A')) # "chr" function translates a unicode (int) back into a character (str)
         self.update()
-
-    def encrypt(self,rotors:str,message:str)->str:
-        #Encrypts a message using the current rotor settings
-
-        self._rotors=list(rotors) #Sets the rotor positions to slow, medium, fast
-        result=[] # List to store the encrypted letters
-
-        for letter in message: 
-            if letter not in "ALPHABET":
-                result.append(letter)
-                continue 
-            
+#hello test
 
 def enigma():
     """Runs the Enigma simulator."""
