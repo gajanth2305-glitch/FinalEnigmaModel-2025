@@ -1,3 +1,22 @@
+commit 20a78b2f33ac70c8fc71bcd1092521aa89656a17
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 13:39:49 2025 +0100
+
+    bug fixes
+
+ Enigma 2.0/FinalEnigmaModel.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit 343877b20ca711525f0f9fcd16193b1bb76c30b0
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 13:31:14 2025 +0100
+
+    Bug fixes
+
+ Enigma 2.0/FinalEnigmaModel.py |  87 ++++++++++++++---------------
+ git-log.txt                    | 123 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 163 insertions(+), 47 deletions(-)
+
 commit 46be4fe3c17cb97aba140a22caca589ebc5f42c4
 Author: gajanth2305-glitch <gajanth2305@gmail.com>
 Date:   Fri Dec 19 13:09:18 2025 +0100
