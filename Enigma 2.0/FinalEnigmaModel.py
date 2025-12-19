@@ -128,7 +128,7 @@ class EnigmaModel:
                     current = self._rotors[0]
                     pos = (ord(current) - ord('A') + 1) % 26 # Same steps for slow rotor if medium rotor completes a full rotation
                     self._rotors[0] = chr(pos + ord('A'))
-                    
+
             fast_offset = ord(self._rotors[2]) - ord('A') # Calculate offsets for each rotor
             med_offset = ord(self._rotors[1]) - ord('A')
             slow_offset = ord(self._rotors[0]) - ord('A')
@@ -163,10 +163,10 @@ class EnigmaModel:
             
         return ''.join(result) # Join list into string and return
 
-    def find_rotors(self, message: str, cipher: str) -> str: # Finds rotor settings that encrypt message to cipher
-        for slow in "ALPHABET": # Iterate through all possible rotor settings
-            for medium in "ALPHABET": #
-                for fast in "ALPHABET":
+    def find_rotors(self, message: str, cipher: str) -> str: # This functions encrypts a message using the given message and the encypted message (cipher)
+        for slow in ALPHABET: # #Brute fores by trying every letter as slow rotor
+            for medium in ALPHABET: #Brute fores by trying every letter as medium rotor
+                for fast in ALPHABET: #Brute fores by trying every letter as fast rotor
                     rotors = slow + medium + fast # Combine rotor settings into a string
                     encrypted = self.encrypt(rotors, message) # Encrypt message with current rotor settings
                     if encrypted == cipher: # Check if encrypted message matches cipher
