@@ -170,8 +170,15 @@ class EnigmaModel:
             result.append(encoded) # Append encoded letter to result list
 
 
-            
-
+    def find_rotors(self, message: str, cipher: str) -> str: # Finds rotor settings that encrypt message to cipher
+        for slow in "ALPHABET": # Iterate through all possible rotor settings
+            for medium in "ALPHABET": #
+                for fast in "ALPHABET":
+                    rotors = slow + medium + fast # Combine rotor settings into a string
+                    encrypted = self.encrypt(rotors, message) # Encrypt message with current rotor settings
+                    if encrypted == cipher: # Check if encrypted message matches cipher
+                        return rotors # Return the rotor settings if a match is found
+        return "Not found"  # Return "Not found" if no settings match
 
 def enigma():
     """Runs the Enigma simulator."""
