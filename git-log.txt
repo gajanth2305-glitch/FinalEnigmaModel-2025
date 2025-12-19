@@ -1,0 +1,123 @@
+commit 46be4fe3c17cb97aba140a22caca589ebc5f42c4
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 13:09:18 2025 +0100
+
+    Find rotor function is implemented
+
+ Enigma 2.0/FinalEnigmaModel.py | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+commit c76ff47e6b96f6ecaf116dec4af2b91cdb97d1a4
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 13:04:48 2025 +0100
+
+    encrytption correction
+
+ Enigma 2.0/FinalEnigmaModel.py                    |  16 ++++++++--------
+ Enigma 2.0/__pycache__/EnigmaView.cpython-313.pyc | Bin 12302 -> 12324 bytes
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+commit cbbeb0f01bbaa4fc30c6e3e012fd1d6d9052dd2f
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 12:57:36 2025 +0100
+
+    completion of encryption
+
+ Enigma 2.0/FinalEnigmaModel.py | 35 ++++++++++++++++++++++++++++++++++-
+ git_log.txt                    | 10 ++++++++++
+ 2 files changed, 44 insertions(+), 1 deletion(-)
+
+commit a77fdfe94c59fb47e3a7dc2c21fc1dc26a3a2ed9
+Author: Alexander_Wollesen <dm7y5njsrs@privaterelay.appleid.com>
+Date:   Fri Dec 19 12:21:41 2025 +0100
+
+    commit
+
+ Enigma 2.0/FinalEnigmaModel.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8934eb800860f49c169fee726d043e81d12509d6
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 12:15:21 2025 +0100
+
+    Rotor advancements
+
+ Enigma 2.0/FinalEnigmaModel.py | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+commit d4ec1f9040600d489ba97467557c331f75809a80
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 12:06:29 2025 +0100
+
+    continuation of the encryption
+
+ Enigma 2.0/FinalEnigmaModel.py | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+commit 6d039a847fe3aad8e13659a10b9965ab918905aa
+Author: Alexander_Wollesen <dm7y5njsrs@privaterelay.appleid.com>
+Date:   Fri Dec 19 11:58:16 2025 +0100
+
+    commit
+
+ Enigma 2.0/FinalEnigmaModel.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 6e3d9d8b2d5abb1c2e018587cea56355ebaec322
+Author: Alexander_Wollesen <dm7y5njsrs@privaterelay.appleid.com>
+Date:   Fri Dec 19 11:57:29 2025 +0100
+
+    commit
+
+ Enigma 2.0/FinalEnigmaModel.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit d4216da9f6b4ec17787c34ae41363fcddbe6d368
+Author: Alexander_Wollesen <dm7y5njsrs@privaterelay.appleid.com>
+Date:   Fri Dec 19 11:55:46 2025 +0100
+
+    commit
+
+ Enigma 2.0/FinalEnigmaModel.py | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+commit 291e797c4d04dafeb09b58335ac70f95a1d65238
+Author: Alexander_Wollesen <dm7y5njsrs@privaterelay.appleid.com>
+Date:   Fri Dec 19 11:53:13 2025 +0100
+
+    commit
+
+ Enigma 2.0/FinalEnigmaModel.py | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+commit c74a8c14ed5f3afca240f292da6dbc8d77ea68c9
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 11:49:07 2025 +0100
+
+    start of the encryption
+
+ Enigma 2.0/FinalEnigmaModel.py | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+commit 245e17f7fb4ef96e14c9da10d71bcc4842bba8ec
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 11:34:22 2025 +0100
+
+    Add files via upload
+
+ Enigma 2.0/EnigmaConstants.py                      |  47 +++
+ Enigma 2.0/EnigmaView.py                           | 315 +++++++++++++++++++++
+ Enigma 2.0/FinalEnigmaModel.py                     | 121 ++++++++
+ Enigma 2.0/__pycache__/EnigmaModel.cpython-313.pyc | Bin 0 -> 8123 bytes
+ Enigma 2.0/__pycache__/EnigmaView.cpython-313.pyc  | Bin 0 -> 12302 bytes
+ Enigma 2.0/images/EnigmaTopView.png                | Bin 0 -> 919529 bytes
+ 6 files changed, 483 insertions(+)
+
+commit 3ec8e1f97744a89c26774d31c1898206f29b98b5
+Author: gajanth2305-glitch <gajanth2305@gmail.com>
+Date:   Fri Dec 19 11:33:11 2025 +0100
+
+    Initial commit
+
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)

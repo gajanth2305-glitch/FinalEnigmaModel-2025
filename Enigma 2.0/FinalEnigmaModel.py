@@ -108,67 +108,60 @@ class EnigmaModel:
         self._rotors[index] = chr(pos+ord('A')) # "chr" function translates a unicode (int) back into a character (str)
         self.update()
 
+    
     def encrypt(self,rotors:str,message:str)->str:
-        #Encrypts a message using the current rotor settings
+        # This function encrypts a message using the given rotor settings.
+        self._rotors=list(rotors)
+        result=[] # empty list to store encrypted letters
 
-        self._rotors=list(rotors) #Sets the rotor positions to slow, medium, fast
-        result=[] # List to store the encrypted letters
+        for letter in message:
+            current = self._rotors[2]
+            pos = (ord(current) - ord('A')+1) % 26 # Converts fast rotor to number and advances it forward by one position
+            self._rotors[2] = chr(pos + ord('A')) # Updates fast rotor
 
-        for letter in message: 
-            if letter not in "ALPHABET": # Non-alphabet characters are not encrypted
-                result.append(letter) 
-                continue # Skip to next letter
-        
-            #Fast rotor advancement
-            current=self._rotors[2] # Advances the rotors as in key_pressed method
-            pos=ord(current)-ord('A')%26 # Gets position of fast rotor 
-            self._rotors[2]= chr(pos+1+ord('A')) # Advances fast rotor by 1
+            if pos == 0:
+                current = self._rotors[1]
+                pos = (ord(current) - ord('A') + 1) % 26 # Same steps for medium rotor if fast rotor completes a full rotation
+                self._rotors[1] = chr(pos + ord('A'))
 
-            #Medium rotor advancement
-            if pos==0:
-                current=self._rotors[1] # Gets current letter of medium rotor
-                pos=(ord(current)-ord('A')+1)%26 # Gets position of medium rotor
-                self._rotors[1]=chr(pos+1+ord('A')) # Advances medium rotor by 1
+                if pos == 0:
+                    current = self._rotors[0]
+                    pos = (ord(current) - ord('A') + 1) % 26 # Same steps for slow rotor if medium rotor completes a full rotation
+                    self._rotors[0] = chr(pos + ord('A'))
+                    
+            fast_offset = ord(self._rotors[2]) - ord('A') # Calculate offsets for each rotor
+            med_offset = ord(self._rotors[1]) - ord('A')
+            slow_offset = ord(self._rotors[0]) - ord('A')
 
-                #Slow rotor advancement
-                if pos==0:
-                    current=self._rotors[0] # Gets current letter of slow rotor
-                    pos=(ord(current)-ord('A')+1)%26 # Gets position of slow rotor
-                    self._rotors[0]=chr(pos+1+ord('A')) # Advances slow rotor by 1
-            
-            fast_offset = ord(self._rotors[2]) - ord('A') # Fast rotor offset
-            med_offset = ord(self._rotors[1]) - ord('A') # Medium rotor offset
-            slow_offset = ord(self._rotors[0]) - ord('A') # Slow rotor offset
+            pos = (ord(letter) - ord('A') + fast_offset) % 26 # Pass through fast rotor
+            c_fast = ROTOR_PERMUTATION_FAST[pos] # Letter after fast rotor
 
-            pos=(ord(letter)-ord('A')+fast_offset)%26 
-            c_fast=ROTOR_PERMUTATION_FAST[pos] # Letter after fast rotor
+            pos = (ord(c_fast) - ord('A') + med_offset) % 26 # Pass through medium rotor
+            c_med = ROTOR_PERMUTATION_MEDIUM[pos] # Letter after medium rotor
 
-            pos=(ord(c_fast)-ord('A')+med_offset)%26
-            c_med=ROTOR_PERMUTATION_MEDIUM[pos] # Letter after medium rotor
+            pos = (ord(c_med) - ord('A') + slow_offset) % 26 # Pass through slow rotor
+            c_slow = ROTOR_PERMUTATION_SLOW[pos] # Letter after slow rotor
 
-            pos=(ord(c_med)-ord('A')+slow_offset)%26
-            c_slow=ROTOR_PERMUTATION_SLOW[pos] # Letter after slow rotor
+            pos = (ord(c_slow) - ord('A') - slow_offset) % 26 
+            c_slow_forward = ROTOR_PERMUTATION_SLOW[pos] # Backwards through slow rotor
 
-            pos = (ord(c_slow) - ord('A') - slow_offset) % 26 #forward through slow rotor
-            c_slow_forward = ROTOR_PERMUTATION_SLOW[pos]
+            pos=ord(c_slow_forward) - ord('A')
+            c_reflected = REFLECTOR_PERMUTATION[pos] #backwards through reflector
 
-            pos = ord(c_slow_forward) - ord('A') 
-            c_reflected = REFLECTOR_PERMUTATION [pos] # Reflector step
-
-            pos = ROTOR_PERMUTATION_SLOW.index(c_reflected) # Backward through slow rotor
+            pos = ROTOR_PERMUTATION_SLOW.index(c_reflected)
             pos = (pos - slow_offset) % 26
-            c_slow_back = chr(pos + ord('A')) # Letter after slow rotor backward
+            c_slow_backward = chr(pos + ord('A')) # Backwards through slow rotor
 
-            pos = ROTOR_PERMUTATION_MEDIUM.index(c_slow_back) # Backward through medium rotor
+            pos = ROTOR_PERMUTATION_MEDIUM.index(c_slow_backward)
             pos = (pos - med_offset) % 26
-            c_med_back = chr(pos + ord('A'))
+            c_med_backward = chr(pos + ord('A')) # Backwards through medium rotor
 
-            pos = ROTOR_PERMUTATION_FAST.index(c_med_back)
+            pos = ROTOR_PERMUTATION_FAST.index(c_med_backward)
             pos = (pos - fast_offset) % 26
             encoded = chr(pos + ord('A')) # Final encoded letter
-
             result.append(encoded) # Append encoded letter to result list
-
+            
+        return ''.join(result) # Join list into string and return
 
     def find_rotors(self, message: str, cipher: str) -> str: # Finds rotor settings that encrypt message to cipher
         for slow in "ALPHABET": # Iterate through all possible rotor settings
