@@ -119,11 +119,24 @@ class EnigmaModel:
                 result.append(letter) 
                 continue # Skip to next letter
         
+            #Fast rotor advancement
             current=self._rotors[2] # Advances the rotors as in key_pressed method
             pos=ord(current)-ord('A')%26 # Gets position of fast rotor 
             self._rotors[2]= chr(pos+1+ord('A')) # Advances fast rotor by 1
 
+            #Medium rotor advancement
+            if pos==0:
+                current=self._rotors[1] # Gets current letter of medium rotor
+                pos=(ord(current)-ord('A')+1)%26 # Gets position of medium rotor
+                self._rotors[1]=chr(pos+1+ord('A')) # Advances medium rotor by 1
+
+                #Slow rotor advancement
+                if pos==0:
+                    current=self._rotors[0] # Gets current letter of slow rotor
+                    pos=(ord(current)-ord('A')+1)%26 # Gets position of slow rotor
+                    self._rotors[0]=chr(pos+1+ord('A')) # Advances slow rotor by 1
             
+            fast_offset = ord(self._rotors[2]) - ord('A') # Fast rotor offset
             
 
 
