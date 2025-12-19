@@ -118,7 +118,7 @@ class EnigmaModel:
             if letter not in "ALPHABET":
                 result.append(letter)
                 continue 
-            
+
 
 def enigma():
     """Runs the Enigma simulator."""
@@ -130,3 +130,4 @@ def enigma():
 
 if __name__ == "__main__":
     enigma()
+#test
