@@ -137,7 +137,7 @@ class EnigmaModel:
                     self._rotors[0]=chr(pos+1+ord('A')) # Advances slow rotor by 1
             
             fast_offset = ord(self._rotors[2]) - ord('A') # Fast rotor offset
-            
+          # test git  
 
 
 def enigma():
